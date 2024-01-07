@@ -47,7 +47,7 @@ build {
   sources = ["source.amazon-ebs.jenkins"]
 
   provisioner "ansible" {
-    playbook_file   = "ansible/jenkins-controller.yaml"
+    playbook_file   = "ansible/jenkins-controller.yml"
     extra_arguments = ["--extra-vars", "ami-id=${var.ami_id} efs_mount_point=${var.efs_mount_point}", "--scp-extra-args", "'-O'", "--ssh-extra-args", "-o IdentitiesOnly=yes -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa"]
   }
 

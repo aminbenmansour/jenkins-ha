@@ -131,3 +131,8 @@ resource "aws_launch_template" "jenkins" {
     security_groups             = [aws_security_group.instance_sg.id]
   }
 }
+
+resource "aws_autoscaling_attachment" "jenkins" {
+  autoscaling_group_name = aws_autoscaling_group.jenkins.name
+  lb_target_group_arn    = aws_lb_target_group.jenkins.arn
+}

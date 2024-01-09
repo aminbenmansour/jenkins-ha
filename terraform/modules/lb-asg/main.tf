@@ -118,6 +118,11 @@ resource "aws_autoscaling_group" "jenkins" {
     create_before_destroy = true
     ignore_changes        = [load_balancers, target_group_arns]
   }
+
+  instance_refresh {
+    strategy = "Rolling"
+    triggers = ["launch_template"]
+  }
 }
 
 resource "aws_launch_template" "jenkins" {

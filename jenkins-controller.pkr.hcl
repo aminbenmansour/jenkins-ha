@@ -29,7 +29,7 @@ locals {
 source "amazon-ebs" "jenkins" {
   ami_name = "${local.app_name}"
 
-  instance_type = "t2.micro"
+  instance_type = "t2.small"
   source_ami    = "${var.ami_id}"
 
   region            = "us-west-2"

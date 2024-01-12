@@ -29,15 +29,30 @@ cd terraform/ssm ; terraform init && terraform apply -auto-approve
 ``` 
 
 iii. Build AWS AMIs
+
 ```bash
 $ make jenkins-agent
 $ make jenkins-controller efs_id=<efs-filesystem-id> region=<aws-region>
 ```
 iv. Provision resources accordingly through terraform modules
-
-> ⚠️ Caveat: Some hard-coded values need to change manually such as AMI ids
+> [!WARNING]
+> Some hard-coded values need to be changed manually such as AMI IDs
 
 ## IV. Diagrams
+The diagram below shows how we designed the tools and services above to work together and achieve our goal.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/aminbenmansour/jenkins-ha/assets/50111205/01c6d7fd-71ab-4030-81c6-dd0f1b080fdb">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/aminbenmansour/jenkins-ha/assets/50111205/5b67b8c7-25a9-49b0-9927-3404c5d681db">
+  <img alt="System design of Jenkins HA cluster on AWS" src="https://github.com/aminbenmansour/jenkins-ha/assets/50111205/01c6d7fd-71ab-4030-81c6-dd0f1b080fdb">
+</picture>
+
+> [!CAUTION]
+> The diagram above is NOT too accurate (on purpose)! It defines all the possibilities that we might encounter
+>
+> It is important to give attention to the note attached to the system design diagram.
+
+
 
 ## V. Roadmap
 

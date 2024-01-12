@@ -38,7 +38,7 @@ iv. Provision resources accordingly through terraform modules
 > [!WARNING]
 > Some hard-coded values need to be changed manually such as AMI IDs
 
-## IV. Diagrams
+## IV. System design
 The diagram below shows how we designed the tools and services above to work together and achieve our goal.
 
 <picture>
@@ -48,11 +48,16 @@ The diagram below shows how we designed the tools and services above to work tog
 </picture>
 
 > [!CAUTION]
-> The diagram above is NOT too accurate (on purpose)! It defines all the possibilities that we might encounter
->
-> It is important to give attention to the note attached to the system design diagram.
+> The diagram above is NOT too accurate (on purpose)! It defines all the possibilities that we might encounter.
 
+> [!IMPORTANT]
+> Give attention to the note attached to the system design diagram.
 
+> [!NOTE]
+> In this project, we also introduced the concept of immutable infrastructure by creating a new AMI containing upgrades and updating the `ami_id` attribute in Terraform when needed. See [differences and trade-offs between mutable and immutable infrastructure](https://www.hashicorp.com/resources/what-is-mutable-vs-immutable-infrastructure).
+
+> [!TIP]
+> It is recommended to keep secrets and configurations external. Thanks to AWS SSM we can always rotate our keypair without downtime.
 
 ## V. Roadmap
 

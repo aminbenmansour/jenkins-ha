@@ -60,5 +60,20 @@ The diagram below shows how we designed the tools and services above to work tog
 > It is recommended to keep secrets and configurations external. Thanks to AWS SSM we can always rotate our keypair without downtime.
 
 ## V. Roadmap
+We need to keep this project as close as possible to be production-ready. Here are a few things to keep in mind regarding a real-world comparison.
 
+Everyone can track upcoming features [here](https://github.com/users/aminbenmansour/projects/1) and contributions are more than welcome :)
+
+### Real-world setup
+1. Private network, DNS and TLS
+2. Jenkins access through a VPN/VDI connection
+3. Jenkins user authentication will be based on LDAP / SSO (Eg. Okta)
+### Real-world implementation
+* **VPC**: 3 public subnets and 3 private subnets
+* **Client to Site VPN**
+* **ASG in Private Subnet**:
+* **EFS in Private Subnet**: Inbound access only from Private Subnets CIDR.
+* **Load Balancer with TLS**: TLS configured in Load Balancer
+* **CloudWatch Monitoring and Logging**: Both for AWS Resources and Jenkins.
+* **EFS Backup**: AWS Backup Service / EFS to EFS Backup.
 ## VI. License

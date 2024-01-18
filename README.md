@@ -77,3 +77,4 @@ Everyone can track upcoming features [here](https://github.com/users/aminbenmans
 * **CloudWatch Monitoring and Logging**: Both for AWS Resources and Jenkins.
 * **EFS Backup**: AWS Backup Service / EFS to EFS Backup.
 ## VI. License
+The [Apache 2.0 License](https://github.com/aminbenmansour/jenkins-ha/blob/main/LICENSE) is permissive. It allows you to use, modify, and distribute the licensed software, including creating derivative works, without requiring those derivative works to be licensed under the same terms. You can release the modified parts of the code under any license you prefer.

@@ -2,7 +2,9 @@
 ### Jenkins Highly Available (HA) cluster setup on AWS using Autoscaling Group (ASG) and Application Load Balancer (ALB) through ***Packer***, ***Ansible***, and ***Terraform***
 
 ## I. Introduction
+The purpose of the project is to establish the *Poor Man's High Availability* architecture on AWS using the right and most efficient tools for each step.
 
+Having multiple Jenkins controller instances might lead to inconsistencies. So, when the instance goes down, there is a few moments of downtime (VM + Java startup time)
 ## II. Tools
 ### Third party prerequisites
 * **Terraform**: Provisioning AWS resources.

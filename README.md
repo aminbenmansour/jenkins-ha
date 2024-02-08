@@ -6,6 +6,8 @@ The purpose of the project is to establish the *Poor Man's High Availability* ar
 
 Having multiple Jenkins controller instances, attached to the same file system, might lead to inconsistencies. So, when the instance goes down, there is a few moments of downtime (VM + Java startup time).
 
+Adopting an *Immutable Infrastructure* approach makes the upgrading and patching process easy. All we need is to upgrade the AMI instance an configure the ASG to use the latest version and as long as the data persists in EFS all the configuration will remain the same.
+
 ## II. Tools
 ### Third party prerequisites
 * **Terraform**: Provisioning AWS resources.

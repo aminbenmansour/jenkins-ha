@@ -4,7 +4,8 @@
 ## I. Introduction
 The purpose of the project is to establish the *Poor Man's High Availability* architecture on AWS using the right and most efficient tools for each step.
 
-Having multiple Jenkins controller instances might lead to inconsistencies. So, when the instance goes down, there is a few moments of downtime (VM + Java startup time)
+Having multiple Jenkins controller instances, attached to the same file system, might lead to inconsistencies. So, when the instance goes down, there is a few moments of downtime (VM + Java startup time).
+
 ## II. Tools
 ### Third party prerequisites
 * **Terraform**: Provisioning AWS resources.
@@ -49,9 +50,13 @@ The diagram below shows how we designed the tools and services above to work tog
   <img alt="System design of Jenkins HA cluster on AWS" src="https://github.com/aminbenmansour/jenkins-ha/assets/50111205/01c6d7fd-71ab-4030-81c6-dd0f1b080fdb">
 </picture>
 
-> [!CAUTION]
-> The diagram above is NOT too accurate (on purpose)! It defines all the possibilities that we might encounter.
+Jenkins is deployed in an AutoScaling Group (ASG) with a Min and Max 1 count. Hence, we have a single instance of Jenkins controller running all the time.
 
+we also have a dedicated EFS disk that holds all Jenkins data. The Jenkins controller AMI will have teh EFS disk mount configuration in the EFS entry.
+
+If the Jenkins controller instance goes down, the ASG policie will bring another instance. In the process the data disk gets attached from the terminating instance to the new instance for serving the previous Jenkins data.
+
+All the existing jobs will fail during the downtime and continue when the instance is ready.
 > [!IMPORTANT]
 > Give attention to the note attached to the system design diagram.
 
